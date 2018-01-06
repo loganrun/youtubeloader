@@ -1,4 +1,5 @@
 $(document).ready(() => {
+  $('.modal').modal();
   $('#searchForm').on('submit', (e) =>{
     let searchText = $('#search').val();
     getVideos(searchText);
@@ -17,19 +18,18 @@ $(document).ready(() => {
       $.each(data.items, function(i, item){
         let vidId = item.id.videoId;
         let vidTitle = item.snippet.title;
-        renderVideo(vidId, vidTitle);
+        renderVideo(vidId);
       })
     }
   );
   }
 
-  function renderVideo(vidId,vidTitle){
+  function renderVideo(vidId){
     $('.results').append(`
       <div class="col s12 l3">
-      <div class="video-container">
-        <iframe width="853" height="480" src=\"//www.youtube.com/embed/${vidId}" frameborder="0" allowfullscreen></iframe>
-      </div>
-
+          <div class="video-container">
+            <iframe width="853" height="480" src=\"//www.youtube.com/embed/${vidId}" frameborder="0" allowfullscreen></iframe>
+          </div>
       </div>
       `)
 
@@ -43,16 +43,3 @@ $(document).ready(() => {
 
 
 });
-
-// <div class="card">
-//   <div class="card-image">
-//   <iframe src=\"//www.youtube.com/embed/${vidId}"><iframe>
-//
-//   </div>
-//   <div class="card-content">
-//     <p> ${vidTitle} </p>
-//   </div>
-//   <div class="card-action">
-//     <a href="#">This is a link</a>
-//   </div>
-// </div>
